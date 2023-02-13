@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import './App.css';
 
 interface ToDoType {
   done: boolean;
@@ -49,15 +48,33 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h1>To-Do list</h1>
-      <input value={value} onChange={onInputChange} onKeyDown={onSubmit} />
-      <div>
+    <div className="mx-auto max-w-2xl p-5">
+      <h1 className="mb-5 text-2xl font-bold">To-Do list</h1>
+      <input
+        className="w-full rounded-lg border border-gray-400 bg-white p-3 shadow-md"
+        value={value}
+        onChange={onInputChange}
+        onKeyDown={onSubmit}
+      />
+      <div className="mt-5">
         {todos.map((todo) => (
-          <div key={todo.id} className="todo">
-            <p className={todo.done ? 'done' : ''}>{todo.text}</p>
-            <button type="button" onClick={toggleDone(todo.id)}>
-              {todo.done ? 'Check as not done' : 'Check as done'}
+          <div
+            key={todo.id}
+            className="mt-5 flex items-center justify-between rounded-lg bg-white p-5 shadow-md"
+          >
+            <p
+              className={`text-lg font-medium ${
+                todo.done ? 'text-gray-500 line-through' : ''
+              }`}
+            >
+              {todo.text}
+            </p>
+            <button
+              type="button"
+              className="rounded-lg bg-indigo-500 p-3 text-white shadow-md hover:bg-indigo-600"
+              onClick={toggleDone(todo.id)}
+            >
+              {todo.done ? 'Mark as Incomplete' : 'Mark as Complete'}
             </button>
           </div>
         ))}
