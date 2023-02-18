@@ -133,7 +133,7 @@ function App() {
     clearedTodosLeft,
     activeMode,
     setActiveMode,
-  } = useTodos([]);
+  } = useTodos();
 
   const [editingTodoId, setEditingTodoId] = useState<string | undefined>();
   const [editTodoValue, setEditTodoValue] = useState<string>('');
